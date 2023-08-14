@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./control.css";
 
 import { ImShuffle } from "react-icons/im";
@@ -19,6 +19,11 @@ export default function Control({ playing, setPlaying }) {
   const [theSong, setTheSong] = useState();
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
+
+  // to use it inside some functions
+  //// as setState is async function
+  const repeattRef = useRef();
+  const shuffletRef = useRef();
 
   function shuffleNumber() {
     let n = parseInt(Math.random() * songs.length);
@@ -58,7 +63,10 @@ export default function Control({ playing, setPlaying }) {
 
     theSong.onended = () => {
       let curr = trackIndex;
-      curr++;
+
+      if (shuffletRef.current) curr = shuffleNumber();
+      if (repeattRef.current) curr;
+      else curr++;
 
       playSong(curr);
     };
@@ -87,11 +95,6 @@ export default function Control({ playing, setPlaying }) {
     playSong(n);
   }
 
-  function showre() {
-    if (repeat) console.log("repeat");
-    else console.log("don't repeat");
-  }
-
   function prevSong() {
     if (currentSongIndex <= 0) return;
 
@@ -105,22 +108,26 @@ export default function Control({ playing, setPlaying }) {
 
   function shuffleSongs() {
     let state = shuffle;
-    if (!state) console.log("shuffle enabled");
-    else console.log("shuffle desabled");
+    shuffletRef.current = !state;
+    // if (!state) console.log("shuffle enabled");
+    // else console.log("shuffle desabled");
     setShuffle((prev) => !prev);
   }
 
   function reapeatTrack() {
     let state = repeat;
     setRepeat((prev) => !prev);
-    if (!state) console.log("shuffle enabled");
-    else console.log("shuffle desabled");
+    repeattRef.current = !state;
+    // if (repeattRef.current)
+    //   console.log("repeattRef.current enabled", repeattRef.current);
+    // else console.log("repeattRef.current desabled", repeattRef.current);
   }
 
   useEffect(() => {
     const aud = document.getElementById("theSong");
     load(currentSongIndex);
     setTheSong(aud);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songs, currentSongIndex]);
 
   return (
