@@ -1,0 +1,12 @@
+.player {
+  background-color: #9292928c;
+
+  width: 22rem;
+  min-height: 30rem;
+  max-height: 34rem;
+  margin: 5rem auto;
+  padding: 1rem;
+
+  border-radius: 1.5rem;
+  box-shadow: 0px 7px 10px 1px;
+}

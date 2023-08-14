@@ -1,0 +1,32 @@
+.contcont {
+  display: grid;
+}
+
+.cont,
+.player {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.playerContianer {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.cont {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  background-size: cover;
+  background-position: 1px 1px;
+  background-repeat: no-repeat;
+  filter: blur(7px);
+}

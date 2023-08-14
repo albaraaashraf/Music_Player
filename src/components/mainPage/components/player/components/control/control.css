@@ -1,0 +1,14 @@
+.control {
+  font-size: 2.5rem;
+  color: #000000;
+
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.control span {
+  opacity: 0.7;
+}
+.control span:hover {
+  opacity: 1;
+}

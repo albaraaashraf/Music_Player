@@ -1,0 +1,26 @@
+.vol-range {
+  gap: 0.5rem;
+}
+
+.range input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  background-color: #000000;
+  border-radius: 0.7rem;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+  border: 0.2rem solid #000000;
+  border-radius: 50%;
+}
