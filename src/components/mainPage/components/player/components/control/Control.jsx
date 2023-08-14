@@ -123,8 +123,6 @@ export default function Control({ playing, setPlaying }) {
     setTheSong(aud);
   }, [songs, currentSongIndex]);
 
-  useEffect(() => {});
-
   return (
     <div className="d-flex flex-row align-items-center control">
       <span>
